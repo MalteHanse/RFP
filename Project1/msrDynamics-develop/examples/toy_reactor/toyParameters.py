@@ -182,6 +182,7 @@ T0_c_m = 1005.8056360691721     # beryllium initial temp
 F_c_f = 46/15850       # core fuel flow rate (gal/min)->(m^3/s) ORNL-1845 pg. 120
 F_c_c = 152/15850      # core coolant flow rate (gal/min)->(m^3/s) ORNL-1845 pg. 121
 
+####### CONSIDER CHANGING DIMENSIONS ON THE ADDED WATER
 # dimensions
 V_fuel = 52071.248849/1e6                                # CAD model (cm^3)->(m^3)
 A_fuel = (69872.856584/2-(6*6.996))/10000                # CAD model (cm^3)->(m^2) 
@@ -196,10 +197,10 @@ V_m = 926899.473/1e6                                     # CAD model (cm^2)->(m^
 rho_c = 1000*0.78  # coolant density (kg/m^3) 
 
 # mass
-m_f_c = fuel_density(T_fuel_avg)*V_fuel
-m_c_c = rho_c*V_coolant         # coolant mass (kg)
-m_m_c = (5490/2.205)            # ORNL-1845 p.111s (lb)->(kg)
-m_t     = V_tubes*rho_inconel   # mass of tubes (kg)  
+m_f_c   = fuel_density(T_fuel_avg)*V_fuel
+m_c_c   = rho_c*V_coolant         # coolant mass (kg)
+m_m_c   = (5490/2.205)            # ORNL-1845 p.111s (lb)->(kg)
+m_t     = V_tubes*rho_inconel     # mass of tubes (kg) 
 
 # mass flow rate 
 W_f = F_c_f * fuel_density(T_fuel_avg)   # fuel mass flow rate (kg/s)
@@ -458,6 +459,31 @@ hxhwc_w_p4 = Point(16.67,21.5)
 hA_w_hxhwc_US = hA(W_hhwc_w_US,[hxhwc_w_p1,hxhwc_w_p2,hxhwc_w_p3,hxhwc_w_p4])
 hA_tw_hxhwc_US = 1/((1/hA_t_hxhwc_US)+(1/hA_w_hxhwc_US))
 hA_tw_hxhwc = hA_tw_hxhwc_US*(9/5)*(1.05504)*(1e-3) # BTU/(sec*degF) -> MW/C
+
+
+###############################################################################
+# parameters for heavy water
+###############################################################################
+m_hw = V_p_hx * 1105      # kg (mass of heavy water volume * density)
+scp_hw = 4.228 * 1e-3       # MJ/kg-C (specific heat capacity of heavy water)
+W_hw = 998*((103*2)/15850)  # kg/s (taken from above)
+T0_hw_in =  F_to_K(1000)     # K (taken from above)
+T0_hw_out =  F_to_K(700)     # K (taken from above)
+
+###############################################################################
+# parameters for water
+###############################################################################
+m_w = (((27.0*27.5*27)/61020)-V_t_hx-V_p_hx) * 1000  # kg/m^3
+scp_w = 4.184 * 1e-3        # MJ/kg-C (specific heat capacity of water)
+W_w = 998*((103*2)/15850)   # kg/s (taken from above)
+T0_w_in = F_to_K(100)
+T0_w_out = F_to_K(70)
+T0_Ww = (T0_hw_in + T0_w_in)/2
+
+###############################################################################
+# parameters for defined dynamics
+###############################################################################
+hA_tw_hw = hA_tw_hxhwc_US*(9/5)*(1.05504)*(1e-3)     # taken form above
 
 
 
