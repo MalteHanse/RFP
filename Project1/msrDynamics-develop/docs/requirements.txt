@@ -1,0 +1,7 @@
+sphinx-rtd-theme
+jitcdde
+numpy
+chspy
+sympy
+matplotlib
+tqdm
