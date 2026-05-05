@@ -197,6 +197,7 @@ V_m = 926899.473/1e6                                     # CAD model (cm^2)->(m^
 rho_c = 1000*0.78  # coolant density (kg/m^3) 
 
 # mass
+
 m_f_c   = fuel_density(T_fuel_avg)*V_fuel
 m_c_c   = rho_c*V_coolant         # coolant mass (kg)
 m_m_c   = (5490/2.205)            # ORNL-1845 p.111s (lb)->(kg)
@@ -484,6 +485,17 @@ T0_Ww = (T0_hw_in + T0_w_in)/2
 # parameters for defined dynamics
 ###############################################################################
 hA_tw_hw = hA_tw_hxhwc_US*(9/5)*(1.05504)*(1e-3)     # taken form above
+
+
+###############################################################################
+# parameters for splitting the core 
+###############################################################################
+#Here we need to split the core. We need a masse for the water around the core
+
+m_w_core= 1105*V_fuel
+T0_hw_core_out =  F_to_K(1100)     # hot out, and hotter than T0_hw_in
+T0_hw_core_in =  F_to_K(650)      #cooled when it comes in. 
+
 
 
 
