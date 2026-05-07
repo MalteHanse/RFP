@@ -468,8 +468,8 @@ hA_tw_hxhwc = hA_tw_hxhwc_US*(9/5)*(1.05504)*(1e-3) # BTU/(sec*degF) -> MW/C
 m_hw = V_p_hx * 1105      # kg (mass of heavy water volume * density)
 scp_hw = 4.228 * 1e-3       # MJ/kg-C (specific heat capacity of heavy water)
 W_hw = 998*((103*2)/15850)  # kg/s (taken from above)
-T0_hw_in =  F_to_K(1000)     # K (taken from above)
-T0_hw_out =  F_to_K(700)     # K (taken from above)
+T0_hw_in =  F_to_K(194)     # K (taken from above)
+T0_hw_out =  F_to_K(122)     # K (taken from above)
 
 ###############################################################################
 # parameters for water
@@ -477,8 +477,8 @@ T0_hw_out =  F_to_K(700)     # K (taken from above)
 m_w = (((27.0*27.5*27)/61020)-V_t_hx-V_p_hx) * 1000  # kg/m^3
 scp_w = 4.184 * 1e-3        # MJ/kg-C (specific heat capacity of water)
 W_w = 998*((103*2)/15850)   # kg/s (taken from above)
-T0_w_in = F_to_K(100)
-T0_w_out = F_to_K(70)
+T0_w_in = F_to_K(104)
+T0_w_out = F_to_K(77)
 T0_Ww = (T0_hw_in + T0_w_in)/2
 
 ###############################################################################
@@ -493,8 +493,8 @@ hA_tw_hw = hA_tw_hxhwc_US*(9/5)*(1.05504)*(1e-3)     # taken form above
 #Here we need to split the core. We need a masse for the water around the core
 
 m_w_core= 1105*V_fuel
-T0_hw_core_out =  F_to_K(1100)     # hot out, and hotter than T0_hw_in
-T0_hw_core_in =  F_to_K(650)      #cooled when it comes in. 
+T0_hw_core_out =  F_to_K(194)     # hot out, and hotter than T0_hw_in
+T0_hw_core_in =  F_to_K(120)      #cooled when it comes in. 
 
 
 
