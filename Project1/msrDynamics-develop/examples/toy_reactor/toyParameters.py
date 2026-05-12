@@ -166,7 +166,10 @@ k_2 = 1-k_1
 # thermal feedback (1/Kelvin, temperature provided in Kelvin) ORNL-1845 pg. 115
 a_f = 1.1*(-4.8e-5)*9/5
 a_b = (1.1e-5)*9/5
-a_c = (-5.88e-5)*9/5
+# a_c = (-5.88e-5)*9/5
+
+# Random guess for a_c for molten salt <-> heavy water int.
+a_c = -2e-4
 
 # operating conditions taken from 25-hr Xenon run Exp. H-8
 # temperatures
@@ -468,8 +471,8 @@ hA_tw_hxhwc = hA_tw_hxhwc_US*(9/5)*(1.05504)*(1e-3) # BTU/(sec*degF) -> MW/C
 m_hw = V_p_hx * 1105      # kg (mass of heavy water volume * density)
 scp_hw = 4.228 * 1e-3       # MJ/kg-C (specific heat capacity of heavy water)
 W_hw = 998*((103*2)/15850)  # kg/s (taken from above)
-T0_hw_in =  F_to_K(174)     # K (taken from above)
-T0_hw_out =  F_to_K(140)     # K (taken from above)
+T0_hw_in = 353.0 # F_to_K(174)     # K (taken from above)
+T0_hw_out = 293.0 # F_to_K(140)     # K (taken from above)
 
 ###############################################################################
 # parameters for water
@@ -477,8 +480,8 @@ T0_hw_out =  F_to_K(140)     # K (taken from above)
 m_w = (((27.0*27.5*27)/61020)-V_t_hx-V_p_hx) * 1000  # kg/m^3
 scp_w = 4.184 * 1e-3        # MJ/kg-C (specific heat capacity of water)
 W_w = 998*((103*2)/15850)   # kg/s (taken from above)
-T0_w_in = F_to_K(100)
-T0_w_out = F_to_K(68)
+T0_w_in = 353.0 # F_to_K(100)
+T0_w_out = 293.0 # F_to_K(68)
 T0_Ww = (T0_hw_in + T0_w_in)/2
 
 ###############################################################################
