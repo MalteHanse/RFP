@@ -169,7 +169,7 @@ a_b = (1.1e-5)*9/5
 # a_c = (-5.88e-5)*9/5
 
 # Random guess for a_c for molten salt <-> heavy water int.
-a_c = -2e-4
+a_c = -1e-4
 
 # operating conditions taken from 25-hr Xenon run Exp. H-8
 # temperatures
